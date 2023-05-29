@@ -40,6 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
+      Future.delayed(const Duration(seconds: 3),() {
+        _speech=false;
+        _stopListening();
+      },);
+
     });
   }
 
@@ -84,13 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       _startListening();
                     },
                       child: const Icon(Icons.mic_off,size: 40)),
-                  const SizedBox(width: 30),
-                  GestureDetector(
-                      onTap: (){
-                        _speech=false;
-                        _stopListening();
-                      },
-                      child: const Icon(Icons.mic,size: 40)),
+                  // const SizedBox(width: 30),
+                  // GestureDetector(
+                  //     onTap: (){
+                  //       _speech=false;
+                  //       _stopListening();
+                  //     },
+                  //     child: const Icon(Icons.mic,size: 40)),
                 ],
               ),
             )
